@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bitespeed Identity Reconciliation API</title>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>🚀 Bitespeed Identity Reconciliation API</h1>
+
+      <p style="text-align: center; color: #718096; margin-bottom: 30px">A powerful service for linking customer contacts across multiple purchases</p>
+    </div>
+
+    <div class="api-section">
+      <h2>📡 API Endpoints</h2>
+
+      <h3><span class="method">POST</span> /identify</h3>
+      <div class="endpoint">POST POST http://localhost:3000/identify</div>
+ <p><strong>Request Body:</strong></p>
+        <div class="json">
+          { "email": "customer@example.com", // optional "phoneNumber":
+          "1234567890" // optional }
+        </div>
+
+        <p><strong>Response:</strong></p>
+        <div class="json">
+          { "contact": { "primaryContactId": 1, "emails":
+          ["customer@example.com"], "phoneNumbers": ["1234567890"],
+          "secondaryContactIds": [] } }
+        </div>
+
+        <h3><span class="method">GET</span> /health</h3>
+        <div class="endpoint">GET http://localhost:3000/health</div>
+        <p>Health check endpoint to verify service status.</p>
+      </div>
+
+      <div class="test-form">
+        <h3>🧪 Test the API</h3>
+        <p>Try the identity reconciliation endpoint:</p>
+
+        <input type="email" id="email" placeholder="Email (optional)" />
+        <input type="tel" id="phone" placeholder="Phone Number (optional)" />
+        <button id="testBtn">Send Request</button>
+
+        <div id="response" class="response" style="display: none"></div>
+      </div>
+
+      <div class="grid">
+        <div class="feature">
+          <h3>🔗 Identity Linking</h3>
+          <p>
+            Automatically links customer contacts when they share email or phone
+            number, maintaining a unified customer profile.
+          </p>
+        </div>
+
+        <div class="feature">
+          <h3>🏆 Primary/Secondary Hierarchy</h3>
+          <p>
+            Maintains contact hierarchy where the oldest contact becomes primary
+            and newer related contacts become secondary.
+          </p>
+        </div>
+
+        <div class="feature">
+          <h3>🔄 Smart Merging</h3>
+          <p>
+            Intelligently merges separate contact chains when new information
+            creates connections between them.
+          </p>
+        </div>
+
+        <div class="feature">
+          <h3>✅ Data Validation</h3>
+          <p>
+            Validates email formats and phone numbers to ensure data quality and
+            prevent errors.
+          </p>
+        </div>
+      </div>
+
+      <div class="api-section">
+        <h2>📋 Business Logic Examples</h2>
+
+        <h4>Scenario 1: New Customer</h4>
+        <p>First time customer creates a new primary contact.</p>
+
+        <h4>Scenario 2: Returning Customer</h4>
+        <p>
+          Customer with same phone but different email creates a secondary
+          contact linked to the original.
+        </p>
+
+        <h4>Scenario 3: Contact Merging</h4>
+        <p>
+          When a request links two separate primary contacts, they get merged
+          with the oldest remaining as primary.
+        </p>
+      </div>
+
+      <div style="text-align: center; margin-top: 40px; color: #718096">
+        <p>Built with Node.js, Express, TypeScript & PostgreSQL</p>
+      </div>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>

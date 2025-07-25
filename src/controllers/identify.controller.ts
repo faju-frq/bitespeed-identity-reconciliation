@@ -112,7 +112,4 @@ export async function identifyContact(req: Request, res: Response) {
   }
 }
 
-export async function getAllContact(req: Request, res: Response) {
-  const allContacts = await Contact.findAll();
-  return res.status(200).json(allContacts);
-}
+

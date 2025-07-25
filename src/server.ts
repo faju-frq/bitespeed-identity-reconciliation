@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 //static files
 app.use(express.static(path.join(__dirname, "../public")));
 
-app.use("/identify", identifyRoutes);
+app.use("/", identifyRoutes);
 
 //Health check endpoint
 app.get("/health", (req, res) => {
@@ -32,7 +32,7 @@ app.get("/", (req, res) => {
     message: "Bitespeed Identity Reconciliation Service",
     version: "1.0.0",
     endpoints: {
-      identify: "POST /api/identify",
+      identify: "POST /identify",
       health: "GET /health",
     },
   });
